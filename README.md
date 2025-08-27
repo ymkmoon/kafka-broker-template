@@ -1,6 +1,16 @@
 # kafka-template
 
+Kafka Broker 역할
+
 카프카 설치 및 테스트 명령어
+
+MQTT Publisher -> MQTT Broker -> Kafka producer -> Kafka Broker -> Consumer
+
+- MQTT Publisher : 추가예정
+- MQTT Broker : 추가예정
+- Kafka producer : https://github.com/ymkmoon/springboot-kafka-producer-template
+- Kafka Broker : https://github.com/ymkmoon/kafka-template
+- Consumer : https://github.com/ymkmoon/springboot-consumer-template
 
 ## 빌드
 
@@ -56,6 +66,8 @@ kafka-console-producer --topic 토픽이름 --bootstrap-server 브로커주소
 kafka-console-producer --topic vehicle-data --bootstrap-server localhost:9092
 
 kafka-console-producer --bootstrap-server kafka1:9092 --topic vehicle-data
+kafka-console-producer --bootstrap-server kafka2:9092 --topic vehicle-data
+kafka-console-producer --bootstrap-server kafka3:9092 --topic vehicle-data
 
 > {"imei": "1234", "speed": 80, "time": "2025-08-27 10:00:00"}
 > {"imei": "1234", "time": "2025-08-27 11:00:00"}
