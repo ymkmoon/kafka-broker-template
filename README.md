@@ -16,7 +16,12 @@ MQTT Publisher -> **EMQX 클러스터 (MQTT Broker)** -> Kafka Broker -> Consume
 ### 1. Kafka 이미지 빌드 및 컨테이너 실행 
 
 ```bash
-docker-compose up -d
+# 로컬 환경
+docker compose -p kafka-cluster --env-file kafka.local.env up -d
+
+# 로컬 환경
+docker compose -p kafka-cluster --env-file kafka.dev.env up -d
+
 ```
 
 ### 2. 토픽 생성
@@ -85,3 +90,24 @@ kafka-console-producer --bootstrap-server kafka3:9092 --topic vehicle-data
   - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR : 복제 개수를 3으로 지정 (멀티 브로커 환경)
 - 포트
   - 각 브로커 컨테이너의 9092 포트를 로컬에서 각각 9092, 9093, 9094로 바인딩
+- 네트워크 공유
+  - EMQX 와 Kafka 는 별도 Compose 이기 때문에 Docker 네트워크 공유
+
+```bash
+# 네트워크 생성
+docker network create iot-net
+
+# Kafka Compose
+docker compose -p kafka-cluster --env-file kafka.env up -d
+# EMQX Compose
+docker compose -p emqx-cluster --env-file emqx.env up -d
+
+# 두 Compose 모두 iot-net 네트워크에 연결
+docker network connect iot-net kafka1
+docker network connect iot-net kafka2
+docker network connect iot-net kafka3
+
+docker network connect iot-net emqx1
+docker network connect iot-net emqx2
+docker network connect iot-net emqx3
+```
