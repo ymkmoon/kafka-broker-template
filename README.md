@@ -4,10 +4,10 @@ Kafka Broker 역할
 
 카프카 설치 및 테스트 명령어
 
-MQTT Publisher -> EMQX 클러스터 (MQTT Broker) -> **Kafka Broker** -> Consumer
+MQTT Publisher -> **EMQX 클러스터 (MQTT Broker)** -> Kafka Broker -> Consumer
 
 - MQTT Publisher : 추가예정
-- MQTT Broker : 추가예정
+- MQTT Broker : https://github.com/ymkmoon/kafka-broker-template
 - Kafka Broker : https://github.com/ymkmoon/kafka-broker-template
 - Consumer : https://github.com/ymkmoon/springboot-consumer-template
 
