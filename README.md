@@ -4,7 +4,7 @@ Kafka Broker 역할
 
 카프카 설치 및 테스트 명령어
 
-MQTT Publisher -> MQTT Broker -> Kafka producer -> Kafka Broker -> Consumer
+MQTT Publisher -> MQTT Broker -> Kafka producer -> **Kafka Broker** -> Consumer
 
 - MQTT Publisher : 추가예정
 - MQTT Broker : 추가예정
